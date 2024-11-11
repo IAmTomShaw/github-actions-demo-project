@@ -25,7 +25,7 @@ export async function getRecipe(req, res) {
         "1/4 cup parsley",
         "8 oz fettuccine pasta"
       ],
-      cookingTime: 30,
+      cookingTime: 40,
       instructions: [
         "Cook pasta according to package instructions",
         "Season chicken with salt, pepper, Italian seasoning, and paprika",
