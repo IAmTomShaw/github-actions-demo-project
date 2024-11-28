@@ -1,0 +1,42 @@
+
+name: Terraform CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Vérifier le code
+        uses: actions/checkout@v3
+
+      - name: Configurer Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.6
+
+      - name: Configurer les identifiants AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1  # Mettez à jour avec votre région AWS
+
+      - name: Initialiser Terraform
+        run: terraform init
+
+      - name: Valider Terraform
+        run: terraform validate
+
+      - name: Planifier Terraform
+        run: terraform plan -out=tfplan
+
+      - name: Appliquer Terraform
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve tfplan
+
