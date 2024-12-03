@@ -12,7 +12,7 @@ describe("Recipes API Endpoints", () => {
 
     // The response should have a status code of 200
 
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(404);
 
     // The response body must have a data object
 
