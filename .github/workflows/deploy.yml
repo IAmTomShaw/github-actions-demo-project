@@ -1,4 +1,4 @@
-name: Deploy Project
+name: Deploy Projects
 
 on:
   pull_request:
