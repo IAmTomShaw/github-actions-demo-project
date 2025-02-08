@@ -6,15 +6,12 @@
     "moduleResolution": "node",
     "removeComments": true,
     "sourceMap": false,
-
     "outDir": "./dist",
     "rootDir": "./src",
     "resolveJsonModule": true,
-
     "skipLibCheck": true,
     "allowJs": true,
     // "checkJs": true,
-    
     "strict": false,
     "types": ["jest", "node"]
   },
