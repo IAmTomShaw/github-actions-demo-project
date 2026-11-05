@@ -1,0 +1,19 @@
+name: deploy project
+
+on:
+  push_request:
+    branches: 
+      - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        container:
+            image: node:20
+        steps:
+            
+            - uses: actions/checkout@v3
+              with:
+                node-version: 20
+            - run: npm ci
+            - run: npm run build      
